@@ -37,7 +37,7 @@ minetest.register_node("livingdesert:date_palm_trunk", {
 		"livingdesert_date_palm_trunk.png"
 	},
 	groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
-	sounds = default.node_sound_wood_defaults(),
+	sounds = mcl_sounds.node_sound_wood_defaults(),
 	paramtype2 = "facedir",
 	on_place = minetest.rotate_node,
 })
@@ -67,9 +67,9 @@ minetest.register_node("livingdesert:date_palm_leaves", {
       }
     }
   },
-  sounds = default.node_sound_leaves_defaults(),
+  sounds = mcl_sounds.node_sound_leaves_defaults(),
 
-  after_place_node = default.after_place_leaves,
+  
 })
 
 minetest.register_node("livingdesert:date_palm_sapling", {
@@ -88,7 +88,7 @@ minetest.register_node("livingdesert:date_palm_sapling", {
   },
   groups = {snappy = 2, dig_immediate = 3, flammable = 2,
     attached_node = 1, sapling = 1},
-  sounds = default.node_sound_leaves_defaults(),
+  sounds = mcl_sounds.node_sound_leaves_defaults(),
 
 	on_construct = function(pos)
 		minetest.get_node_timer(pos):start(math.random(300, 1500))
@@ -113,7 +113,7 @@ minetest.register_node("livingdesert:date_palm_wood", {
 	tiles = {"livingdesert_date_palm_wood.png"},
 	is_ground_content = false,
 	groups = {wood = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 3},
-	sounds = default.node_sound_wood_defaults(),
+	sounds = mcl_sounds.node_sound_wood_defaults(),
 })
 
 minetest.register_craft({
@@ -121,39 +121,39 @@ minetest.register_craft({
 	recipe = {{"livingdesert:date_palm_trunk"}}
 })
 
-    stairs.register_stair_and_slab(
+    mcl_stairs.register_stair_and_slab(
       "livingdesert_date_palm_wood",
       "livingdesert:date_palm_wood",
       {choppy = 2, oddly_breakable_by_hand = 1, flammable = 3},
       {"livingdesert_date_palm_wood.png"},
       S("Date Palm Stair"),
       S("Date Palm Slab"),
-      default.node_sound_wood_defaults()
+      mcl_sounds.node_sound_wood_defaults()
     )
 
-    stairs.register_stair_and_slab(
+    mcl_stairs.register_stair_and_slab(
       "livingdesert_date_palm_trunk",
       "livingdesert:date_palm_trunk",
       {choppy = 2, oddly_breakable_by_hand = 1, flammable = 3},
       {"livingdesert_date_palm_trunk_top.png", "livingdesert_date_palm_trunk_top.png", "livingdesert_date_palm_trunk.png"},
       S("Date Palm Trunk Stair"),
       S("Date Palm Trunk Slab"),
-      default.node_sound_wood_defaults()
+      mcl_sounds.node_sound_wood_defaults()
     )
 
-  doors.register_fencegate(
+  mcl_fences.register_fence_and_fence_gate_def(
     "livingdesert:gate_date_palm_wood",
     {
       description = S("Date Palm Wood Fence Gate"),
       texture = "livingdesert_date_palm_wood.png",
       material = "livingdesert:date_palm_wood",
       groups = {choppy = 3, oddly_breakable_by_hand = 2, flammable = 3},
-      sounds = default.node_sound_wood_defaults()
+      sounds = mcl_sounds.node_sound_wood_defaults()
     }
   )
 
 
-default.register_fence(
+mcl_fences.register_fence_def(
   "livingdesert:fence_date_palm_wood",
   {
     description = S("Date Palm Fence"),
@@ -162,11 +162,11 @@ default.register_fence(
     wield_image = "default_fence_overlay.png^livingdesert_date_palm_wood.png^default_fence_overlay.png^[makealpha:255,126,126",
     material = "livingdesert:date_palm_wood",
     groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2},
-    sounds = default.node_sound_wood_defaults()
+    sounds = mcl_sounds.node_sound_wood_defaults()
   }
 )
 
-default.register_fence_rail(
+register_fence_rail(
   "livingdesert:fence_rail_date_palm_wood",
   {
     description = S("Date Palm Fence Rail"),
@@ -177,7 +177,7 @@ default.register_fence_rail(
       "default_fence_rail_overlay.png^[makealpha:255,126,126",
     material = "livingdesert:date_palm_wood",
     groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2},
-    sounds = default.node_sound_wood_defaults()
+    sounds = mcl_sounds.node_sound_wood_defaults()
   }
 )
 
@@ -185,7 +185,7 @@ default.register_fence_rail(
 minetest.register_decoration({
     name = "livingdesert:date_palm_tree",
     deco_type = "schematic",
-    place_on = {"default:sand", "default:desert_sand"},
+    place_on = {"mcl_core:sand", "mcl_core:desert_sand"},
     place_offset_y = -1,
     sidelen = 16,
     fill_ratio = 0.00315,
@@ -200,7 +200,7 @@ minetest.register_decoration({
 minetest.register_decoration({
     name = "livingdesert:date_palm_tree2",
     deco_type = "schematic",
-    place_on = {"default:sand", "default:desert_sand"},
+    place_on = {"mcl_core:sand", "mcl_core:desert_sand"},
     place_offset_y = -1,
     sidelen = 16,
     fill_ratio = 0.00315,
@@ -215,7 +215,7 @@ minetest.register_decoration({
 minetest.register_decoration({
     name = "livingdesert:date_palm_tree3",
     deco_type = "schematic",
-    place_on = {"default:sand", "default:desert_sand"},
+    place_on = {"mcl_core:sand", "mcl_core:desert_sand"},
     place_offset_y = -1,
     sidelen = 16,
     fill_ratio = 0.00315,
@@ -244,7 +244,7 @@ minetest.register_node("livingdesert:date_palm_fruits", {
 	groups = {food = 1, flammable = 2, fleshy = 3, dig_immediate = 3, leafdecay = 1, leafdecay_drop = 1, winleafdecay_drop = 1, winleafdecay = 3},
         drop = "livingdesert:date_palm_fruits",
 	on_use = minetest.item_eat(6),
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = mcl_sounds.node_sound_leaves_defaults(),
 	after_place_node = function(pos, placer)
 		if placer:is_player() then
 			minetest.set_node(pos, {name = "livingdesert:date_palm_fruits", param2 = 1})
@@ -283,7 +283,7 @@ minetest.register_node("livingdesert:euphorbia_trunk", {
 		"livingdesert_euphorbia_trunk.png"
 	},
 	groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
-	sounds = default.node_sound_wood_defaults(),
+	sounds = mcl_sounds.node_sound_wood_defaults(),
 	paramtype2 = "facedir",
 	on_place = minetest.rotate_node,
 })
@@ -313,9 +313,9 @@ minetest.register_node("livingdesert:euphorbia_leaves", {
       }
     }
   },
-  sounds = default.node_sound_leaves_defaults(),
+  sounds = mcl_sounds.node_sound_leaves_defaults(),
 
-  after_place_node = default.after_place_leaves,
+  
 })
 
 minetest.register_node("livingdesert:euphorbia_sapling", {
@@ -334,7 +334,7 @@ minetest.register_node("livingdesert:euphorbia_sapling", {
   },
   groups = {snappy = 2, dig_immediate = 3, flammable = 2,
     attached_node = 1, sapling = 1},
-  sounds = default.node_sound_leaves_defaults(),
+  sounds = mcl_sounds.node_sound_leaves_defaults(),
 
 	on_construct = function(pos)
 		minetest.get_node_timer(pos):start(math.random(300, 1500))
@@ -357,7 +357,7 @@ minetest.register_node("livingdesert:euphorbia_sapling", {
 minetest.register_decoration({
     name = "livingdesert:euphorbia_tree",
     deco_type = "schematic",
-    place_on = {"default:sand", "default:desert_sand"},
+    place_on = {"mcl_core:sand", "mcl_core:desert_sand"},
     place_offset_y = 0,
 		noise_params = {
 			offset = 0,
@@ -378,7 +378,7 @@ minetest.register_decoration({
 minetest.register_decoration({
     name = "livingdesert:euphorbia_tree2",
     deco_type = "schematic",
-    place_on = {"default:sand", "default:desert_sand"},
+    place_on = {"mcl_core:sand", "mcl_core:desert_sand"},
     place_offset_y = 0,
     sidelen = 16,
 		noise_params = {
@@ -400,7 +400,7 @@ minetest.register_decoration({
 minetest.register_decoration({
     name = "livingdesert:euphorbia_tree3",
     deco_type = "schematic",
-    place_on = {"default:sand", "default:desert_sand"},
+    place_on = {"mcl_core:sand", "mcl_core:desert_sand"},
     place_offset_y = 0,
     sidelen = 16,
 		noise_params = {
@@ -479,9 +479,9 @@ minetest.register_node("livingdesert:figcactus_flower", {
       }
     }
   },
-  sounds = default.node_sound_leaves_defaults(),
+  sounds = mcl_sounds.node_sound_leaves_defaults(),
 
-  after_place_node = default.after_place_leaves,
+  
 })
 
 minetest.register_node("livingdesert:figcactus_sapling", {
@@ -500,7 +500,7 @@ minetest.register_node("livingdesert:figcactus_sapling", {
   },
   groups = {snappy = 2, dig_immediate = 3, flammable = 2,
     attached_node = 1, sapling = 1},
-  sounds = default.node_sound_leaves_defaults(),
+  sounds = mcl_sounds.node_sound_leaves_defaults(),
 
 	on_construct = function(pos)
 		minetest.get_node_timer(pos):start(math.random(300, 1500))
@@ -524,7 +524,7 @@ minetest.register_node("livingdesert:figcactus_sapling", {
 minetest.register_decoration({
     name = "livingdesert:figcactus_tree",
     deco_type = "schematic",
-    place_on = {"default:sand"},
+    place_on = {"mcl_core:sand"},
     place_offset_y = 0,
     sidelen = 16,
 		noise_params = {
@@ -546,7 +546,7 @@ minetest.register_decoration({
 minetest.register_decoration({
     name = "livingdesert:figcactus_tree2",
     deco_type = "schematic",
-    place_on = {"default:sand"},
+    place_on = {"mcl_core:sand"},
     place_offset_y = 0,
     sidelen = 16,
 		noise_params = {
@@ -568,7 +568,7 @@ minetest.register_decoration({
 minetest.register_decoration({
     name = "livingdesert:figcactus_tree3",
     deco_type = "schematic",
-    place_on = {"default:sand"},
+    place_on = {"mcl_core:sand"},
     place_offset_y = 0,
     sidelen = 16,
 		noise_params = {
@@ -590,7 +590,7 @@ minetest.register_decoration({
 minetest.register_decoration({
     name = "livingdesert:figcactus_tree4",
     deco_type = "schematic",
-    place_on = {"default:sand"},
+    place_on = {"mcl_core:sand"},
     place_offset_y = 0,
     sidelen = 16,
 		noise_params = {
@@ -612,7 +612,7 @@ minetest.register_decoration({
 minetest.register_decoration({
     name = "livingdesert:figcactus_tree5",
     deco_type = "schematic",
-    place_on = {"default:sand"},
+    place_on = {"mcl_core:sand"},
     place_offset_y = 0,
     sidelen = 16,
 		noise_params = {
@@ -634,7 +634,7 @@ minetest.register_decoration({
 minetest.register_decoration({
     name = "livingdesert:figcactus_tree6",
     deco_type = "schematic",
-    place_on = {"default:sand"},
+    place_on = {"mcl_core:sand"},
     place_offset_y = 0,
     sidelen = 16,
 		noise_params = {
@@ -656,7 +656,7 @@ minetest.register_decoration({
 minetest.register_decoration({
     name = "livingdesert:figcactus_tree7",
     deco_type = "schematic",
-    place_on = {"default:sand"},
+    place_on = {"mcl_core:sand"},
     place_offset_y = 0,
     sidelen = 16,
 		noise_params = {
@@ -692,7 +692,7 @@ minetest.register_node("livingdesert:figcactus_fruit", {
 	groups = {food = 1, flammable = 2, fleshy = 3, dig_immediate = 3, leafdecay = 1, leafdecay_drop = 1, winleafdecay_drop = 1, winleafdecay = 3},
         drop = "livingdesert:figcactus_fruit",
 	on_use = minetest.item_eat(6),
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = mcl_sounds.node_sound_leaves_defaults(),
 	after_place_node = function(pos, placer)
 		if placer:is_player() then
 			minetest.set_node(pos, {name = "livingdesert:figcactus_fruit", param2 = 1})
@@ -715,7 +715,7 @@ minetest.register_node("livingdesert:yucca", {
 	walkable = false,
 	buildable_to = true,
 	groups = {snappy = 3, flammable = 3, attached_node = 1},
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = mcl_sounds.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
 		fixed = {-6 / 16, -0.5, -6 / 16, 6 / 16, 4 / 16, 6 / 16},
@@ -725,7 +725,7 @@ minetest.register_node("livingdesert:yucca", {
 	minetest.register_decoration({
 		name = "livingdesert:yucca",
 		deco_type = "simple",
-                place_on = {"default:sand", "default:desert_sand"},
+                place_on = {"mcl_core:sand", "mcl_core:desert_sand"},
 		sidelen = 16,
 		noise_params = {
 			offset = 0,
@@ -745,7 +745,7 @@ minetest.register_node("livingdesert:yucca", {
 	minetest.register_decoration({
 		name = "livingdesert:succulent",
 		deco_type = "simple",
-                place_on = {"default:sand"},
+                place_on = {"mcl_core:sand"},
 		sidelen = 16,
 		noise_params = {
 			offset = -0.1,
@@ -774,7 +774,7 @@ minetest.register_node("livingdesert:succulent", {
 	    walkable = false,
 	    buildable_to = true,
 	    groups = {snappy = 3, flower = 1, flora = 1, attached_node = 1, flammable = 1, beautiflowers = 1},
-	    sounds = default.node_sound_leaves_defaults(),
+	    sounds = mcl_sounds.node_sound_leaves_defaults(),
 	    selection_box = {
 		    type = "fixed",
 		    fixed = {-4 / 16, -0.5, -4 / 16, 4 / 16, 0.0, 4 / 16},
@@ -784,7 +784,7 @@ minetest.register_node("livingdesert:succulent", {
 	minetest.register_decoration({
 		name = "livingdesert:succulent2",
 		deco_type = "simple",
-                place_on = {"default:sand"},
+                place_on = {"mcl_core:sand"},
 		sidelen = 16,
 		noise_params = {
 			offset = -0.1,
@@ -813,7 +813,7 @@ minetest.register_node("livingdesert:succulent2", {
 	    walkable = false,
 	    buildable_to = true,
 	    groups = {snappy = 3, flower = 1, flora = 1, attached_node = 1, flammable = 1, beautiflowers = 1},
-	    sounds = default.node_sound_leaves_defaults(),
+	    sounds = mcl_sounds.node_sound_leaves_defaults(),
 	    selection_box = {
 		    type = "fixed",
 		    fixed = {-4 / 16, -0.5, -4 / 16, 4 / 16, 0.0, 4 / 16},
@@ -824,7 +824,7 @@ minetest.register_node("livingdesert:succulent2", {
 	minetest.register_decoration({
 		name = "livingdesert:succulent3",
 		deco_type = "simple",
-                place_on = {"default:sand"},
+                place_on = {"mcl_core:sand"},
 		sidelen = 16,
 		noise_params = {
 			offset = -0.1,
@@ -853,7 +853,7 @@ minetest.register_node("livingdesert:succulent3", {
 	    walkable = false,
 	    buildable_to = true,
 	    groups = {snappy = 3, flower = 1, flora = 1, attached_node = 1, flammable = 1, beautiflowers = 1},
-	    sounds = default.node_sound_leaves_defaults(),
+	    sounds = mcl_sounds.node_sound_leaves_defaults(),
 	    selection_box = {
 		    type = "fixed",
 		    fixed = {-4 / 16, -0.5, -4 / 16, 4 / 16, 0.0, 4 / 16},
@@ -863,7 +863,7 @@ minetest.register_node("livingdesert:succulent3", {
 	minetest.register_decoration({
 		name = "livingdesert:succulent4",
 		deco_type = "simple",
-                place_on = {"default:sand"},
+                place_on = {"mcl_core:sand"},
 		sidelen = 16,
 		noise_params = {
 			offset = -0.1,
@@ -892,7 +892,7 @@ minetest.register_node("livingdesert:succulent4", {
 	    walkable = false,
 	    buildable_to = true,
 	    groups = {snappy = 3, flower = 1, flora = 1, attached_node = 1, flammable = 1, beautiflowers = 1},
-	    sounds = default.node_sound_leaves_defaults(),
+	    sounds = mcl_sounds.node_sound_leaves_defaults(),
 	    selection_box = {
 		    type = "fixed",
 		    fixed = {-4 / 16, -0.5, -4 / 16, 4 / 16, 0.0, 4 / 16},
@@ -902,7 +902,7 @@ minetest.register_node("livingdesert:succulent4", {
 	minetest.register_decoration({
 		name = "livingdesert:succulent5",
 		deco_type = "simple",
-                place_on = {"default:sand"},
+                place_on = {"mcl_core:sand"},
 		sidelen = 16,
 		noise_params = {
 			offset = -0.1,
@@ -931,7 +931,7 @@ minetest.register_node("livingdesert:succulent5", {
 	    walkable = false,
 	    buildable_to = true,
 	    groups = {snappy = 3, flower = 1, flora = 1, attached_node = 1, flammable = 1, beautiflowers = 1},
-	    sounds = default.node_sound_leaves_defaults(),
+	    sounds = mcl_sounds.node_sound_leaves_defaults(),
 	    selection_box = {
 		    type = "fixed",
 		    fixed = {-4 / 16, -0.5, -4 / 16, 4 / 16, 0.0, 4 / 16},
@@ -941,7 +941,7 @@ minetest.register_node("livingdesert:succulent5", {
 	minetest.register_decoration({
 		name = "livingdesert:cactus",
 		deco_type = "simple",
-                place_on = {"default:desert_sand"},
+                place_on = {"mcl_core:desert_sand"},
 		sidelen = 16,
 		noise_params = {
 			offset = 0,
@@ -971,7 +971,7 @@ minetest.register_node("livingdesert:cactus", {
 	    walkable = true,
 	    buildable_to = true,
 	    groups = {snappy = 3, flower = 1, flora = 1, attached_node = 1, flammable = 1, beautiflowers = 1},
-	    sounds = default.node_sound_leaves_defaults(),
+	    sounds = mcl_sounds.node_sound_leaves_defaults(),
 	    selection_box = {
 		    type = "fixed",
 		    fixed = {-4 / 16, -0.5, -4 / 16, 4 / 16, 0.0, 4 / 16},
@@ -981,7 +981,7 @@ minetest.register_node("livingdesert:cactus", {
 	minetest.register_decoration({
 		name = "livingdesert:cactus2",
 		deco_type = "simple",
-                place_on = {"default:desert_sand"},
+                place_on = {"mcl_core:desert_sand"},
 		sidelen = 16,
 		noise_params = {
 			offset = 0,
@@ -1011,7 +1011,7 @@ minetest.register_node("livingdesert:cactus2", {
 	    walkable = false,
 	    buildable_to = true,
 	    groups = {snappy = 3, flower = 1, flora = 1, attached_node = 1, flammable = 1, beautiflowers = 1},
-	    sounds = default.node_sound_leaves_defaults(),
+	    sounds = mcl_sounds.node_sound_leaves_defaults(),
 	    selection_box = {
 		    type = "fixed",
 		    fixed = {-4 / 16, -0.5, -4 / 16, 4 / 16, 0.0, 4 / 16},
@@ -1021,7 +1021,7 @@ minetest.register_node("livingdesert:cactus2", {
 	minetest.register_decoration({
 		name = "livingdesert:cactus3",
 		deco_type = "simple",
-                place_on = {"default:desert_sand"},
+                place_on = {"mcl_core:desert_sand"},
 		sidelen = 16,
 		noise_params = {
 			offset = 0,
@@ -1051,7 +1051,7 @@ minetest.register_node("livingdesert:cactus3", {
 	    walkable = true,
 	    buildable_to = true,
 	    groups = {snappy = 3, flower = 1, flora = 1, attached_node = 1, flammable = 1, beautiflowers = 1},
-	    sounds = default.node_sound_leaves_defaults(),
+	    sounds = mcl_sounds.node_sound_leaves_defaults(),
 	    selection_box = {
 		    type = "fixed",
 		    fixed = {-4 / 16, -0.5, -4 / 16, 4 / 16, 0.0, 4 / 16},
@@ -1061,7 +1061,7 @@ minetest.register_node("livingdesert:cactus3", {
 	minetest.register_decoration({
 		name = "livingdesert:cactus4",
 		deco_type = "simple",
-                place_on = {"default:desert_sand"},
+                place_on = {"mcl_core:desert_sand"},
 		sidelen = 16,
 		noise_params = {
 			offset = 0,
@@ -1092,7 +1092,7 @@ minetest.register_node("livingdesert:cactus4", {
 	    walkable = false,
 	    buildable_to = true,
 	    groups = {snappy = 3, flower = 1, flora = 1, attached_node = 1, flammable = 1, beautiflowers = 1},
-	    sounds = default.node_sound_leaves_defaults(),
+	    sounds = mcl_sounds.node_sound_leaves_defaults(),
 	    selection_box = {
 		    type = "fixed",
 		    fixed = {-4 / 16, -0.5, -4 / 16, 4 / 16, 0.0, 4 / 16},
@@ -1101,7 +1101,7 @@ minetest.register_node("livingdesert:cactus4", {
 	minetest.register_decoration({
 		name = "livingdesert:cactus5",
 		deco_type = "simple",
-                place_on = {"default:desert_sand"},
+                place_on = {"mcl_core:desert_sand"},
 		sidelen = 16,
 		noise_params = {
 			offset = 0,
@@ -1132,7 +1132,7 @@ minetest.register_node("livingdesert:cactus5", {
 	    walkable = false,
 	    buildable_to = true,
 	    groups = {snappy = 3, flower = 1, flora = 1, attached_node = 1, flammable = 1, beautiflowers = 1},
-	    sounds = default.node_sound_leaves_defaults(),
+	    sounds = mcl_sounds.node_sound_leaves_defaults(),
 	    selection_box = {
 		    type = "fixed",
 		    fixed = {-4 / 16, -0.5, -4 / 16, 4 / 16, 0.0, 4 / 16},
@@ -1141,7 +1141,7 @@ minetest.register_node("livingdesert:cactus5", {
 
 if minetest.get_modpath("bonemeal") then
 	bonemeal:add_deco({
-		{"default:desert_sand", {"livingdesert:cactus5", "livingdesert:cactus4", "livingdesert:cactus3", "livingdesert:cactus2", "livingdesert:cactus", "livingdesert:succulent5", "livingdesert:succulent4", "livingdesert:succulent3", "livingdesert:succulent2", "livingdesert:succulent", "livingdesert:yucca"}, {}}
+		{"mcl_core:desert_sand", {"livingdesert:cactus5", "livingdesert:cactus4", "livingdesert:cactus3", "livingdesert:cactus2", "livingdesert:cactus", "livingdesert:succulent5", "livingdesert:succulent4", "livingdesert:succulent3", "livingdesert:succulent2", "livingdesert:succulent", "livingdesert:yucca"}, {}}
 	})
 end
 
